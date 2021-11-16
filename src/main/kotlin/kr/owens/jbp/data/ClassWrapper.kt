@@ -12,9 +12,9 @@ import org.objectweb.asm.tree.ClassNode
 data class ClassWrapper(
     var classNode: ClassNode,
     var originalName: String = "",
-    var originalClass: ByteArray,
-    val methods: MutableList<MethodWrapper>,
-    var fields: MutableList<FieldWrapper>
+    var originalClass: ByteArray?,
+    val methods: MutableList<MethodWrapper> = mutableListOf(),
+    var fields: MutableList<FieldWrapper> = mutableListOf()
 ) {
     fun initializeClassWrapper() {
         originalName = classNode.name
@@ -25,7 +25,7 @@ data class ClassWrapper(
             }
         }
 
-        classNode.fields.let {
+        classNode.fields?.let {
             fields.run {
                 it.forEach {
                     add(FieldWrapper(this@ClassWrapper, it, it.name, it.desc))

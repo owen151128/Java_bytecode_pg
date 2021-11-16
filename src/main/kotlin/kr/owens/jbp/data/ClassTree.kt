@@ -9,7 +9,7 @@ package kr.owens.jbp.data
  */
 data class ClassTree(
     var classWrapper: ClassWrapper,
-    var parentClasses: MutableSet<String>,
-    var subClasses: MutableSet<String>,
-    var missingSuperClass: Boolean
+    var parentClasses: MutableSet<String> = mutableSetOf(),
+    var subClasses: MutableSet<String> = mutableSetOf(),
+    var missingSuperClass: Boolean = false
 )

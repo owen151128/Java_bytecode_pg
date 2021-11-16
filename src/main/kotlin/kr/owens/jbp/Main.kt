@@ -1,5 +1,7 @@
 package kr.owens.jbp
 
+import java.io.File
+
 /**
  * @author owen151128@gmail.com
  *
@@ -7,6 +9,13 @@ package kr.owens.jbp
  *
  * Providing features related to Main class
  */
+const val APP_NAME = "Java bytecode pg"
+
 fun main() {
-    println("Hello Kotlin!")
+    println("$APP_NAME Start!")
+
+    val jBCPg = JavaBytecodePlayGround(File("classes.jar"), File("output.jar"))
+    jBCPg.parseJar()
+
+    println("$APP_NAME End!")
 }
